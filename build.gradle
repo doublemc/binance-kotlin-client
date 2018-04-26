@@ -1,11 +1,14 @@
 buildscript {
-    ext.kotlin_version = '1.2.40'
+    ext {
+        feignVersion = '8.18.0'
+        kotlinVersion = '1.2.40'
+    }
 
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     }
 }
 
@@ -19,7 +22,9 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    runtime "com.netflix.feign:feign-core:$feignVersion"
+    compile "com.netflix.feign:feign-gson:$feignVersion"
 }
 
 compileKotlin {
